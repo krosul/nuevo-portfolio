@@ -1,0 +1,130 @@
+---
+import Icons from './Icons.astro';
+---
+
+<aside
+  class="container-contact fixed left-0 right-0 -bottom-37 grid place-content-center h-fit duration-300 transition-all"
+  id="aside"
+>
+  <div
+    class="section-contact w-96 container relative cursor-pointer top-0"
+    id="terminal"
+  >
+    <div id="container" class="bg-mainColor rounded-t-xl w-96">
+      <button class="w-full" id="button-open">Contactame</button>
+      <div
+        class="main-content flex flex-col gap-2 content-center justify-center items-center z-10 w-full border-t-2 border-grey"
+      >
+        <a class="">Descargar CV</a>
+        <div class="w-full px-4">
+          <a class="flex items-center justify-between my-1">
+            <Icons icon="phone" style="w-7" />
+            <div class="flex-initial"></div>
+            <span>+57 311 507 4806</span>
+          </a>
+          <a class="flex items-center justify-between my-1">
+            <Icons icon="email" style="w-7" />
+            <!-- <div class="flex-initial"></div> -->
+            <span>workspacejprp@gmail.com</span>
+          </a>
+        </div>
+        <div class="footer-contact w-full flex justify-between py-2 px-4">
+          <a>
+            <Icons icon="linkedind" />
+          </a>
+          <a>
+            <Icons icon="github" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .section-contact button {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    display: block;
+    color: white;
+    font-size: 1.17em;
+  }
+
+  #aside:not(.open):hover {
+    transform: translateY(-20px);
+  }
+
+  #terminal #container:before {
+    content: '';
+    background: linear-gradient(133.61deg, #a87ffb 17.33%, #25a6e9 100.47%);
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    left: 0rem;
+    right: 0rem;
+    top: 0.5rem;
+    width: 100%;
+    bottom: 0;
+    z-index: -55;
+    transform: translate3d(var(--tw-translate-x), var(--tw-translate-y), 0)
+      rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-blur: blur(64px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+      var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert)
+      var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+    transition: opacity 0.5s ease;
+  }
+  #terminal #container:after {
+    content: '';
+    background: linear-gradient(
+      to right,
+      #2e3c51 0%,
+      #2e3c51 34%,
+      #2e3c51 49%,
+      #fff 57%,
+      #fff 64%,
+      #a87ffb 66%,
+      #25a6e9 100%
+    );
+    background-size: 300% 100%;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    transition: background-position 0.8s ease;
+    inset: -1px;
+    border-top-right-radius: 0.75rem;
+    border-top-left-radius: 0.75rem;
+    pointer-events: none;
+    position: absolute;
+    z-index: -10;
+    transform: translate3d(var(--tw-translate-x), var(--tw-translate-y), 0)
+      rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+  #terminal:hover #container:before {
+    opacity: 1;
+  }
+
+  #terminal:hover #container:after {
+    background-position: 100% 50%;
+  }
+</style>
+<script>
+  const $mainContent = document.getElementById('terminal')!;
+  const $button = document.getElementById('button-open')!;
+  const $aside = document.querySelector('aside')!;
+  addEventListener('click', (e) => {
+    let target = e.target as Node;
+    if ($mainContent.contains(target) || $button.contains(target)) {
+      $aside.className = $aside.className.replace('-bottom-37', 'bottom-0');
+      $aside.className = $aside.className.concat(' open');
+      return;
+    }
+
+    if (!$mainContent.contains(target) || !$button.contains(target)) {
+      $aside.className = $aside.className.replace('bottom-0', '-bottom-37');
+      $aside.className = $aside.className.replace('open', '');
+    }
+  });
+</script>

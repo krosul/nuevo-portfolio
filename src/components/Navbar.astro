@@ -1,0 +1,124 @@
+<nav
+  class="nav overflow-hidden h-44 sticky flex justify-end flex-col z-30 gap-[5px] items-center right-0 top-0 md:bg-blueGrey md:justify-center md:h-16 md:items-end"
+>
+  <button
+    id="button-navbar"
+    class="bg-purple absolute top-2 right-2 text-black border-transparent cursor-pointer rounded-full p-1 md:hidden"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="icon h-7 aspect-square"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path>
+    </svg>
+  </button>
+  <div
+    class="container-links flex flex-col justify-center items-end gap-2.5 absolute top-[45%] right-0 md:flex-row md:static md:top-0 md:mr-4"
+    id="container-links-navbar"
+  >
+    <a
+      class="link getOut group relative no-underline text-[white] scroll-smooth font-medium transition-all hover:text-purple"
+      href="#aboutme"
+    >
+      <span class="font-bold text-purple">{'<'}</span>
+       Sobre mi
+      <span class="font-bold text-purple">/></span>
+    </a>
+    <a
+      class="link getOut relative no-underline text-[white] font-medium transition-all hover:text-purple"
+      href="#"
+    >
+      <span class="font-bold text-purple">{'<'}</span>
+       Proyectos
+      <span class="font-bold text-purple">/></span>
+    </a>
+    <a
+      class="link getOut relative no-underline text-[white] font-medium transition-all hover:text-purple"
+      href="#technologies"
+    >
+      <span class="font-bold text-purple">{'<'}</span>
+       Tecnologias
+      <span class="font-bold text-purple">/></span></a
+    >
+  </div>
+</nav>
+
+<style>
+  .link:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .link:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  .link:nth-child(2) {
+    animation-delay: 100ms;
+  }
+  .link:nth-child(3) {
+    animation-delay: 150ms;
+  }
+  .enter {
+    /* transition: all; */
+    animation: Enter 700ms ease;
+    right: 0;
+  }
+  .getOut {
+    right: -100%;
+    animation: GetOut 500ms ease;
+  }
+  @media (min-width: 768px) {
+    .link {
+      position: static;
+    }
+  }
+  @keyframes Enter {
+    from {
+      right: inherit;
+    }
+    to {
+      right: 0;
+    }
+  }
+  @keyframes GetOut {
+    from {
+      right: 0;
+    }
+    to {
+      right: -100%;
+    }
+  }
+</style>
+<script>
+  const $button = document.getElementById('button-navbar')!;
+  const $Links = document.querySelectorAll('a.link');
+  addEventListener('click', (e) => {
+    // $divContainer.ch
+    let target = e.target as Node;
+    console.log($button.contains(target));
+    if ($button.contains(target)) {
+      $Links.forEach((l) => {
+        if (!l.classList.contains('enter')) {
+          l.classList.remove('getOut');
+          l.classList.add('enter');
+        } else {
+          l.classList.remove('enter');
+          l.classList.add('getOut');
+        }
+      });
+    } else {
+      $Links.forEach((l) => {
+        if (l.classList.contains('enter')) {
+          l.classList.remove('entert');
+          l.classList.add('getOut');
+        }
+      });
+    }
+  });
+</script>

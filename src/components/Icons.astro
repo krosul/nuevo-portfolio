@@ -1,0 +1,30 @@
+---
+import LinkedindIcon from '../../public/email.svg';
+import GithubIcon from '../../public/github.svg';
+import PhoneIcon from '../../public/phone.svg';
+import EmailIcon from '../../public/email.svg';
+import LinkIcon from '../../public/link.svg';
+import CodeIcon from '../../public/code.svg';
+interface Props {
+  icon: keyof typeof iconOptions;
+  style?: string;
+}
+
+const {icon, style} = Astro.props as Props;
+// console.log(icon);
+
+const iconOptions = {
+  linkedind: LinkedindIcon?.src,
+  github: GithubIcon?.src,
+  email: EmailIcon?.src,
+  phone: PhoneIcon?.src,
+  link: LinkIcon?.src,
+  code: CodeIcon?.src,
+};
+const iconSelected = iconOptions[icon];
+---
+
+<img
+  src={iconSelected}
+  class={`cursor-pointer w-10 ${style} hover:stroke-purple`}
+/>
