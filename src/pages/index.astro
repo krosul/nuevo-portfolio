@@ -15,9 +15,17 @@ import Technologies from '../components/Technologies.astro';
       <section>
         <h1>Hola</h1>
         <div class="container">
-          <div class="overflow-hidden flex flex-col h-48">
-            <h2>Probando</h2>
-            <h2>Probando2</h2>
+          <div class="title" id="title1">
+            <h2>Juan Pablo Rodriguez</h2>
+          </div>
+          <div class="title" id="title2">
+            <h2>Full stack developer</h2>
+          </div>
+          <div class="title" id="title3">
+            <h2>Frontend developer</h2>
+          </div>
+          <div class="title" id="title4">
+            <h2>Backend developer</h2>
           </div>
         </div>
       </section>
@@ -81,4 +89,42 @@ import Technologies from '../components/Technologies.astro';
         -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
     }
   }
+  .container {
+    text-align: center;
+  }
+
+  .title {
+    display: none;
+    animation:
+      lights 5s 750ms linear infinite,
+      slide-up 0.5s ease-in-out;
+    transition: all 1s;
+  }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+      /* opacity: 0; */
+    }
+    100% {
+      transform: translateY(0);
+      /* opacity: 1; */
+    }
+  }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const titles = document.querySelectorAll('.title');
+    let currentIndex = 0;
+
+    function showNextTitle() {
+      titles[currentIndex].style.display = 'none';
+      currentIndex = (currentIndex + 1) % titles.length;
+      titles[currentIndex].style.display = 'block';
+    }
+
+    showNextTitle(); // Mostrar el primer título inmediatamente
+
+    setInterval(showNextTitle, 8000); // Cambiar de título cada 8 segundos
+  });
+</script>
