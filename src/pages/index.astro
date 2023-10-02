@@ -108,7 +108,7 @@ import Technologies from '../components/Technologies.astro';
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const titles = document.querySelectorAll('.title');
+    const titles = document.querySelectorAll<HTMLElement>('.title');
     let currentIndex = 0;
 
     function showNextTitle() {
